@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body>
+        <h1 class="text-blue-800 mx-auto bg-yellow-400 rounded-lg w-5/6 p-3 text-3xl mt-10">
+                Lets know the facts of cats and new image of Dogs
+        </h1>
+        <p class="text-red-500 mx-auto w-5/6 hover:text-blue-600 font-bold text-2xl"></p>
+      
+        <img  src="" alt="" class=" w-5/6 border-4 border-inset border-yellow-600 mx-auto rounded-lg shadow-xl mt-6 shadow-gray-700 ring-4 ring-green-700 sm:w-2/6"> 
+
+        <div class="flex justify-center">
+                
+        <button class="text-white bg-blue-600 rounded-lg p-2   mt-4 font-bold ">Get new Facts</button>
+
+        </div>
+</body>
+
+
+
+
+<script>
+
+        let p1obj = document.querySelector('p');
+        
+        
+
+
+let url = "https://catfact.ninja/fact";
+
+let f = fetch(url);  //  it will return promise
+
+f
+.then((res)=>{
+// console.log(res);
+return res.json();
+})
+.then((data)=>{
+        // console.log(data.fact);
+        let p = data.fact; 
+        p1obj.innerText = p;
+})
+.catch((error)=>{
+        console.log(error);
+});
+
+
+let btn = document.querySelector("button");
+
+btn.addEventListener("click",()=>{
+        location.reload(); 
+}); 
+
+
+
+
+
+
+let imObj = document.querySelector('img');
+
+let url2 = "https://dog.ceo/api/breeds/image/random";
+
+let f2 = fetch(url2);
+f2
+.then((re)=>{
+        console.log(re);
+        return re.json();  
+})
+.then((data2)=>{
+        let d2 = data2.message;
+        imObj.src = d2;
+
+})
+.catch((er)=>{
+        console.log(er);
+        
+});
+
+
+
+
+
+
+
+
+</script>
+
+</html>
+
+ 
